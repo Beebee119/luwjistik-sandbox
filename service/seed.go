@@ -3,6 +3,8 @@ package service
 import (
 	"math/rand"
 	"sandbox/core"
+
+	"github.com/google/uuid"
 )
 
 func SeedData(c *Container) {
@@ -12,12 +14,12 @@ func SeedData(c *Container) {
 	order1 := generateOrder(userA.ID)
 	order2 := generateOrder(userA.ID)
 	order3 := generateOrder(userB.ID)
-	c.OrdersManager.SaveOrder(&order1)
-	c.OrdersManager.SaveOrder(&order2)
-	c.OrdersManager.SaveOrder(&order3)
+	c.OrdersManager.CreateOrder(&order1)
+	c.OrdersManager.CreateOrder(&order2)
+	c.OrdersManager.CreateOrder(&order3)
 }
 
-func generateOrder(userID uint) core.Order {
+func generateOrder(userID uuid.UUID) core.Order {
 	return core.Order{
 		TrackingNumber:      randomString(5),
 		ConsigneeAddress:    "Bugis Street",

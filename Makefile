@@ -1,3 +1,6 @@
+tidy:
+	go mod tidy
+
 start:
 	go run ./bin/web
 
